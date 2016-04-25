@@ -70,7 +70,9 @@ void MainWindow::setStatusBarText(const QString &text)
 void MainWindow::showContextMenu(const QPoint &pos)
 {
     if (tableView->indexAt(pos).row() == -1)
+    {
         return;
+    }
 
     m_showContextRow = tableView->indexAt(pos).row();
 
@@ -90,7 +92,9 @@ void MainWindow::openFile()
     QString cmd = "xdg-open " + tableView->model()->index(m_showContextRow, 1).data().toString() + "/"
             + tableView->model()->index(m_showContextRow, 0).data().toString();
     if (system(cmd.toLocal8Bit().data()) != 0)
+    {
         QMessageBox::warning(this, "Error opening", "No application is registered as handling this file");
+    }
 }
 
 void MainWindow::openFilePath()
@@ -117,5 +121,7 @@ void MainWindow::copyFullPath()
 void MainWindow::keyPressEvent ( QKeyEvent * event )
 {
     if (event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return)
+    {
         on_search_clicked();
+    }
 }

@@ -22,7 +22,9 @@ int CTableModel::columnCount(const QModelIndex &parent) const
 QVariant CTableModel::headerData ( int section, Qt::Orientation orientation, int role ) const
 {
     if (role != Qt::DisplayRole || orientation != Qt::Horizontal)
+    {
         return QAbstractItemModel::headerData(section, orientation, role);
+    }
 
     switch (section)
     {
@@ -88,7 +90,7 @@ QVariant CTableModel::data(const QModelIndex &index, int role) const
 
 QVariant CTableModel::sizeValue(const size_t size) const
 {
-    return QString("%1 KB").arg(size/1024+1);
+    return QString("%1 KB").arg(size/1024.0, 0, 'f', 2);
 }
 
 QVariant CTableModel::timeValue(const time_t timep) const
