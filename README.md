@@ -9,6 +9,6 @@ http://blog.csdn.net/toormi/article/details/50679863
 由于性能限制没有做到即时搜索，后续版本性能提升后可做到即时搜索.
 
 编译使用方法:
-qmake
-make
+qmake &&
+make &&
 ./EverythingForLinuxPreview
